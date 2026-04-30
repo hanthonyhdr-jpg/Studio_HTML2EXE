@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual | Hero Builder Studio</title>
+    <style>
+        :root {
+            --bg: #0f0f12;
+            --card: #1c1c22;
+            --accent: #e8ff00;
+            --text: #ffffff;
+            --text-dim: #a0a0b0;
+            --neon-glow: 0 0 15px rgba(232, 255, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: var(--neon-glow);
+        }
+
+        header p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #2a2a35;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 span {
+            font-size: 1.5rem;
+        }
+
+        .step-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .step-list li {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: var(--accent);
+            color: black;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(45deg, #1c1c22, #252530);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 40px 0;
+        }
+
+        code {
+            background: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #00e87a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #2a2a35;
+            color: var(--text-dim);
+            margin-top: 60px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #2a2a35;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            color: var(--accent);
+            border: 1px solid #3a3a45;
+        }
+
+        .preview-img {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: bold;
+            border: 1px dashed #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Studio Builder <span style="font-size: 1.5rem; vertical-align: middle; opacity: 0.7;">v1.2</span></h1>
+        <p>Manual Oficial de Operação | Tecnologia Hero JUVICKS</p>
+    </header>
+
+    <div class="card" style="margin-bottom: 40px; border-left: 5px solid var(--accent);">
+        <h3><span>🖥️</span> A Interface do Builder</h3>
+        <p>Abaixo estão os detalhes de cada campo da sua ferramenta de compilação:</p>
+        
+        <div class="step-list" style="margin-top: 25px;">
+            <div style="margin-bottom: 20px;">
+                <strong style="color: var(--accent);">1. NOME DO PROJETO:</strong>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Define o nome do arquivo .exe e o nome que aparecerá no Instalador Windows. Ex: <i>MeuApp_VersaoFinal</i></p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <strong style="color: var(--accent);">2. ARQUIVO HTML PRINCIPAL:</strong>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">O arquivo base (index.html). O Builder coletará automaticamente todos os arquivos JS/CSS que estiverem na mesma pasta.</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <strong style="color: var(--accent);">3. ÍCONE DO PROGRAMA (.ICO):</strong>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Deve ser um arquivo de imagem no formato <code>.ico</code>. Ele será o rosto do seu aplicativo.</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <strong style="color: var(--accent);">4. PASTA DE DESTINO:</strong>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Local onde o Builder criará a pasta final do sistema e os instaladores.</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <strong style="color: var(--accent);">5. GERAR INSTALADOR PROFISSIONAL:</strong>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Se marcado, cria um arquivo <code>Setup.exe</code> para que o cliente instale o programa como um software oficial.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="grid">
+        <div class="card">
+            <h3><span>🟢</span> Botão Gerar Tudo Agora</h3>
+            <p>Ao clicar no botão verde, o Builder inicia o processo. Não feche a janela até que o Log de Processamento mostre a mensagem de sucesso.</p>
+        </div>
+        <div class="card">
+            <h3><span>📝</span> Log de Processamento</h3>
+            <p>Acompanhe em tempo real cada etapa da compilação. Caso ocorra algum erro, as informações detalhadas aparecerão nesta área preta.</p>
+        </div>
+    </section>
+
+    <h2>Fluxo de Compilação</h2>
+    <div class="highlight-box">
+        <p>O Studio Builder utiliza o motor <b>PyInstaller + Inno Setup</b> para garantir que seu código HTML seja convertido em binários seguros e otimizados para Windows 10 e 11.</p>
+    </div>
+
+    <section class="grid">
+        <div class="card">
+            <h3><span>📂</span> Estrutura de Saída</h3>
+            <p>O Builder gerará uma pasta com o nome do seu projeto contendo:</p>
+            <ul style="padding-left: 20px; margin-top: 10px; font-size: 0.9rem;">
+                <li><code>SeuApp.exe</code> (O programa principal)</li>
+                <li><code>_internal/</code> (Pasta de dependências vitais)</li>
+                <li><code>Instaladores/</code> (O instalador .exe de setup)</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3><span>🔔</span> Dica da Bandeja</h3>
+            <p>Lembre-se: Após compilado, seu app se esconde na bandeja ao ser fechado. Isso mantém o sistema leve e sempre pronto para uso rápido.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Hero JUVICKS | Builder Studio v1.2</p>
+    </footer>
+</div>
+
+</body>
+</html>
